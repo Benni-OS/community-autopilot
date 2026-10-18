@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 470" width="100%" height="100%">
+  <defs>
+    <linearGradient id="headerGradGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF9900" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#FF5500" stop-opacity="0.8"/>
+    </linearGradient>
+    <filter id="shadowGold" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#FF9900" flood-opacity="0.2"/>
+    </filter>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;display=swap');
+      .terminal-text {
+        font-family: 'JetBrains Mono', 'Fira Code', Menlo, Monaco, Consolas, monospace;
+        font-size: 13.5px;
+        line-height: 22px;
+      }
+      .c-dim { fill: #6E7681; }
+      .c-white { fill: #F0F6FC; }
+      .c-gold { fill: #FF9900; font-weight: 700; }
+      .c-orange { fill: #FF5500; }
+      .c-cyan { fill: #00F0FF; font-weight: 600; }
+      .c-green { fill: #00FF66; font-weight: 600; }
+      .c-yellow { fill: #FFBD2E; font-weight: 600; }
+
+      @keyframes cycleAnim {
+        0% { opacity: 0; transform: translateY(4px); }
+        3% { opacity: 1; transform: translateY(0); }
+        92% { opacity: 1; transform: translateY(0); }
+        98% { opacity: 0; transform: translateY(-2px); }
+        100% { opacity: 0; }
+      }
+
+      @keyframes blink {
+        0%, 49% { opacity: 1; }
+        50%, 100% { opacity: 0; }
+      }
+
+      .cursor {
+        animation: blink 1s infinite;
+        fill: #FF9900;
+      }
+
+      .anim-l0 { animation: cycleAnim 13s ease infinite; animation-delay: 0.1s; }
+      .anim-l1 { animation: cycleAnim 13s ease infinite; animation-delay: 1.0s; }
+      .anim-l2 { animation: cycleAnim 13s ease infinite; animation-delay: 2.1s; }
+      .anim-l3 { animation: cycleAnim 13s ease infinite; animation-delay: 3.2s; }
+      .anim-l4 { animation: cycleAnim 13s ease infinite; animation-delay: 4.4s; }
+      .anim-l5 { animation: cycleAnim 13s ease infinite; animation-delay: 5.5s; }
+      .anim-l6 { animation: cycleAnim 13s ease infinite; animation-delay: 6.7s; }
+      .anim-l7 { animation: cycleAnim 13s ease infinite; animation-delay: 7.8s; }
+      .anim-l8 { animation: cycleAnim 13s ease infinite; animation-delay: 8.9s; }
+      .anim-l9 { animation: cycleAnim 13s ease infinite; animation-delay: 10.0s; }
+    </style>
+  </defs>
+
+  <!-- Terminal Window Outer Frame -->
+  <rect x="10" y="10" width="860" height="450" rx="12" ry="12" fill="#0A0D14" stroke="#FF9900" stroke-width="1.5" stroke-opacity="0.5" filter="url(#shadowGold)"/>
+
+  <!-- Titlebar -->
+  <path d="M 10 22 C 10 15.37 15.37 10 22 10 L 858 10 C 864.63 10 870 15.37 870 22 L 870 46 L 10 46 Z" fill="#141824"/>
+  <line x1="10" y1="46" x2="870" y2="46" stroke="#252D42" stroke-width="1"/>
+
+  <!-- Window Controls -->
+  <circle cx="32" cy="28" r="6" fill="#FF5F56"/>
+  <circle cx="52" cy="28" r="6" fill="#FFBD2E"/>
+  <circle cx="72" cy="28" r="6" fill="#27C93F"/>
+
+  <!-- Title text -->
+  <text x="440" y="32" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="#8B949E" font-weight="500">
+    community-autopilot — autonomous GitHub triage &amp; maintainer bot — 860x450
+  </text>
+
+  <!-- Terminal Content -->
+  <g class="terminal-text" transform="translate(30, 80)">
+    
+    <!-- Line 0: Command Invocation -->
+    <g class="anim-l0">
+      <text x="0" y="0">
+        <tspan class="c-gold">❯ </tspan>
+        <tspan class="c-cyan">community-autopilot</tspan>
+        <tspan class="c-white"> monitor </tspan>
+        <tspan class="c-dim">--repos benni-os/mcp-forge,benni-os/benni-nexus --safety-gate strict</tspan>
+      </text>
+    </g>
+
+    <!-- Line 1: Header banner -->
+    <g class="anim-l1" transform="translate(0, 28)">
+      <text x="0" y="0">
+        <tspan class="c-dim">[AUTOPILOT]</tspan>
+        <tspan class="c-gold"> Benni OS Community Autopilot v1.0.0 Active</tspan>
+        <tspan class="c-dim"> — Surveillance Online</tspan>
+      </text>
+    </g>
+
+    <!-- Line 2: Webhook server -->
+    <g class="anim-l2" transform="translate(0, 56)">
+      <text x="0" y="0">
+        <tspan class="c-cyan">● REAL-TIME WEBHOOKS:</tspan>
+        <tspan class="c-green"> FastAPI Server Listening on :8000 </tspan>
+        <tspan class="c-dim">(HMAC-SHA256 signature verified)</tspan>
+      </text>
+    </g>
+
+    <!-- Line 3: New Issue Detected -->
+    <g class="anim-l3" transform="translate(0, 80)">
+      <text x="0" y="0">
+        <tspan class="c-dim">[INGEST] New GitHub Issue #42 in </tspan><tspan class="c-white">benni-os/mcp-forge</tspan>
+        <tspan class="c-dim">: "SSE stream disconnects after 60s"</tspan>
+      </text>
+    </g>
+
+    <!-- Line 4: SLA and priority -->
+    <g class="anim-l4" transform="translate(0, 114)">
+      <text x="0" y="0">
+        <tspan class="c-gold">● SLA CLASSIFICATION:</tspan>
+        <tspan class="c-yellow"> HIGH (Bug Report / Transport Timeout)</tspan>
+        <tspan class="c-dim"> → Target response SLA: &lt;5 mins</tspan>
+      </text>
+    </g>
+
+    <!-- Line 5: NEMESIS Nexus drafting -->
+    <g class="anim-l5" transform="translate(0, 138)">
+      <text x="0" y="0">
+        <tspan class="c-cyan">● NEMESIS REASONING:</tspan>
+        <tspan class="c-white"> Drafted technical resolution with reproducible snippet </tspan>
+        <tspan class="c-dim">(Voice: Benni Maintainer)</tspan>
+      </text>
+    </g>
+
+    <!-- Line 6: Safety gate passed -->
+    <g class="anim-l6" transform="translate(0, 172)">
+      <text x="0" y="0">
+        <tspan class="c-green">✔ SAFETY GATES PASSED:</tspan>
+        <tspan class="c-white"> Zero recursive loop check, maintainer auth verified, budget approved</tspan>
+      </text>
+    </g>
+
+    <!-- Line 7: Post response & Slack alert -->
+    <g class="anim-l7" transform="translate(0, 196)">
+      <text x="0" y="0">
+        <tspan class="c-dim">[DISPATCH] Response posted to Issue #42 | Operations alert pushed to </tspan>
+        <tspan class="c-cyan">#slack-maintainers</tspan>
+      </text>
+    </g>
+
+    <!-- Line 8: Verdict -->
+    <g class="anim-l8" transform="translate(0, 230)">
+      <text x="0" y="0">
+        <tspan class="c-white">Autopilot Verdict: </tspan>
+        <tspan class="c-gold">AUTONOMOUS COMMUNITY CARE</tspan>
+        <tspan class="c-dim"> | 100% of contributors answered in &lt;60s</tspan>
+      </text>
+    </g>
+
+    <!-- Line 9: Ready prompt -->
+    <g class="anim-l9" transform="translate(0, 260)">
+      <text x="0" y="0">
+        <tspan class="c-gold">❯ </tspan>
+        <tspan class="c-dim">Autopilot listening for new webhook events...</tspan>
+        <tspan class="cursor"> █</tspan>
+      </text>
+    </g>
+
+  </g>
+
+  <!-- Bottom Accent Stripe -->
+  <rect x="10" y="457" width="860" height="3" fill="url(#headerGradGold)" rx="1.5"/>
+</svg>

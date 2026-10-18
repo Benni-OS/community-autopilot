@@ -1,15 +1,35 @@
-# 🤖 Benni OS Community Autopilot
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D0D0D,50:3d2600,100:FF9900&height=200&section=header&text=community-autopilot&fontSize=56&fontColor=ffffff&fontAlignY=38&desc=Autonomous%20GitHub%20Issue%20Triage%20%26%20Maintainer%20Bot%20with%20NEMESIS%20Tracing&descAlignY=58&descSize=16&animation=fadeIn" width="100%"/>
+
+<br/>
+
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=20&duration=3000&pause=800&color=FF9900&center=true&vCenter=true&multiline=true&repeat=true&width=800&height=80&lines=Autonomous+GitHub+Issue+Triage+%26+Responder.;NEMESIS+Tracing+%E2%80%A2+Safety+Gates+%E2%80%A2+Slack+Alerts;Every+contributor+answered+in+%3C60s." alt="Typing SVG" />
+
+<br/><br/>
 
 [![CI Quality Gate](https://github.com/benni-os/community-autopilot/actions/workflows/test.yml/badge.svg)](https://github.com/benni-os/community-autopilot/actions/workflows/test.yml)
-[![Docker](https://img.shields.io/badge/docker-ready-blue.svg)](docker/Dockerfile)
-[![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-blue.svg)](https://www.python.org/)
-[![Checked with mypy](https://img.shields.io/badge/mypy-strict-success.svg)](https://mypy-lang.org/)
-[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Docker](https://img.shields.io/badge/docker-ready-FF9900?style=for-the-badge&logo=docker&logoColor=white)](docker/Dockerfile)
+[![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-FF9900?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Checked with mypy](https://img.shields.io/badge/mypy-strict-00C853?style=for-the-badge&logo=python&logoColor=white)](https://mypy-lang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-0D0D0D?style=for-the-badge&logo=opensourceinitiative&logoColor=FF9900)](LICENSE)
+[![Part of Benni OS](https://img.shields.io/badge/Part%20of-Benni%20OS-0D0D0D?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/benni-os)
 
-> **Benni OS Community Autopilot** is an autonomous GitHub issue triage and responder agent with **NEMESIS** tracing, multi-repo surveillance, safety gates, Slack operational notifications, and real-time webhook ingestion.
+<br/>
 
----
+> **"Zero unanswered issues. Every open-source contributor treated like an enterprise VIP."**
+
+<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" width="100%"/>
+
+<br/>
+
+<img src="assets/demo.svg" alt="Community Autopilot Autonomous GitHub Triage Demo" width="100%"/>
+
+<br/>
+
+</div>
+
+<br/>
 
 ## 🌟 Key Features
 
@@ -189,6 +209,66 @@ uv run mypy --strict src/ tests/
 
 ---
 
+## 🌐 The Benni OS Ecosystem
+
+`community-autopilot` is part of the **Benni OS** decentralized agentic architecture. The ecosystem is organized into modular **Public Open-Source Infrastructure** and **Proprietary Core Autonomous Systems**:
+
+### 🔓 Public Open-Source Infrastructure
+
+| Layer / Domain | Repository | Maintainer | Description | Status |
+|---|---|---|---|---|
+| **Security & Defense** | [**`agent-cyber-sentinel`**](https://github.com/BenniAlencar/agent-cyber-sentinel) | `@BenniAlencar` | Tier-0 Zero-Trust runtime security shield, prompt injection firewall & secret redactor. | 🟢 Stable (Apache-2.0) |
+| **Execution & State** | [**`agent-run-ledger`**](https://github.com/BenniAlencar/agent-run-ledger) | `@BenniAlencar` | Resumable multi-step execution state machine, anti-loop circuit breaker & crash recovery. | 🟢 Stable (Apache-2.0) |
+| **Long-Term Memory** | [**`agent-memory-mesh`**](https://github.com/BenniAlencar/agent-memory-mesh) | `@BenniAlencar` | Sovereign bi-temporal knowledge graph & episodic memory with multi-tenant isolation. | 🟢 Stable (Apache-2.0) |
+| **Zero-Trust Verification** | [**`reality-lock`**](https://github.com/BenniAlencar/reality-lock) | `@BenniAlencar` | Cryptographic execution verification & signed SHA-256 evidence ledgers for side-effects. | 🟢 Stable (Apache-2.0) |
+| **MCP Tooling Matrix** | [**`mcp-forge`**](https://github.com/benni-os/mcp-forge) | `Benni-OS` | Rapid developer toolchain for building, validating, and publishing Model Context Protocol servers. | 🟢 Public OSS |
+| **Local Hybrid Inference** | [**`benni-inference-engine`**](https://github.com/benni-os/benni-inference-engine) | `Benni-OS` | GPU+CPU MoE expert offloading runtime with Skill 81 Ceiling Extraction on consumer hardware. | 🟢 Public OSS |
+| **Federated Execution** | [**`benni-operator-gateway`**](https://github.com/benni-os/benni-operator-gateway) | `Benni-OS` | Unified policy-governed operator gateway for dispatching actions across local and cloud environments. | 🟢 Public OSS |
+| **Model Routing Hub** | [**`benni-nexus`**](https://github.com/benni-os/benni-nexus) | `Benni-OS` | Intelligent LLM model router optimizing for latency, cost, and task-specific reasoning ceilings. | 🟢 Public OSS |
+| **Autonomous Community** | [**`community-autopilot`**](https://github.com/benni-os/community-autopilot) | `Benni-OS` | Autonomous event-driven community management, issue triage, and repository telemetry. | 🟢 Public OSS |
+
+---
+
+### 🔒 Proprietary Core & Autonomous Systems (Enterprise Benni OS)
+
+The open-source stack serves as the decentralized foundation for the enterprise-grade Benni OS autonomous swarm kernel:
+
+| System | Role & Scope | Architecture Doctrine | Access |
+|---|---|---|---|
+| **Benni Master OS** | Central operating system kernel v9.4 governing 43 canonical skills, runtime contracts, and swarm coordination. | `Universal Skills 00–100` | 🔒 Private Core |
+| **Project Benjamin** | Sovereign autonomous execution orchestrator with typed handoff contracts and zero-human-in-the-loop loops. | `Skill 93 Autonomous Dispatch` | 🔒 Private Core |
+| **Project Adam** | Agent synthesis, benchmark evaluation, and continuous recursive self-evolution engine. | `Skill 92 Self-Evolution` | 🔒 Private Core |
+| **Benni Control Plane** | Distributed state persistence, atomic snapshot restore protocols, and multi-tenant ledger governance. | `Skill 90 Control Plane OS` | 🔒 Enterprise |
+| **Benni Social Hub** | Multi-channel content authority distribution, attribution engine, and automated revenue funnels. | `Skill 52 & Skill 95 Revenue Loop` | 🔒 Enterprise |
+| **Benni Canvas** | Autonomous UI engineering subsystem v14.0 delivering generative high-end motion and responsive dashboards. | `Skill 54 Open Design & Skill 56` | 🔒 Enterprise |
+| **Benni Nemesis** | Federated integration gateway connecting cloud APIs, vector databases, and multi-cloud webhooks. | `Skill 97 Nemesis Gateway` | 🔒 Private Core |
+| **Benni OS Genesis** | Structured prompt engineering compilation and generative knowledge distillation engine. | `Skill 70 Model Behavior` | 🔒 Private Core |
+
+---
+
+👉 **Explore & Connect with the Benni OS Ecosystem:**
+* **Official Website**: [https://bennios.dev](https://bennios.dev)
+* **Benni Operator Hub**: [https://hub.bennios.dev](https://hub.bennios.dev)
+* **GitHub Organization**: [https://github.com/benni-os](https://github.com/benni-os)
+* **Maintainer Profile**: [https://github.com/BenniAlencar](https://github.com/BenniAlencar)
+* **Documentation & Blueprints**: [https://docs.bennios.dev](https://docs.bennios.dev)
+
+<br/>
+
 ## 📄 License
 
 MIT © [Benni OS](https://github.com/benni-os)
+
+<br/>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:FF9900,50:3d2600,100:0D0D0D&height=120&section=footer" width="100%"/>
+
+<div align="center">
+
+**community-autopilot** — *Autonomous Community Care by [Benni OS](https://github.com/benni-os)*
+
+`AUTONOMOUS_TRIAGE` • `NEMESIS_TRACING` • `SLA_CLASSIFIER` • `SLACK_ALERTS` • `MIT_LICENSE`
+
+Engineered by **Benni Alencar** and the Benni OS Core Engineering Group
+
+</div>
