@@ -273,3 +273,6 @@ MIT © [Benni OS](https://github.com/benni-os)
 Engineered by **Benni Alencar** and the Benni OS Core Engineering Group
 
 </div>
+
+
+* **[`agent-deep-research`](https://github.com/BenniAlencar/agent-deep-research)**: Autonomous multi-source deep research engine with cryptographic citation proofs & >85% token distillation.
