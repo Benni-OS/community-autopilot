@@ -23,7 +23,7 @@
 
 <br/>
 
-<img src="assets/demo.svg" alt="Community Autopilot Autonomous GitHub Triage Demo" width="100%"/>
+<img src="assets/demo.gif" alt="Community Autopilot Autonomous GitHub Triage Demo" width="100%"/>
 
 <br/>
 
