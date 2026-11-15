@@ -9,6 +9,7 @@
 <br/><br/>
 
 [![CI Quality Gate](https://github.com/benni-os/community-autopilot/actions/workflows/test.yml/badge.svg)](https://github.com/benni-os/community-autopilot/actions/workflows/test.yml)
+[![Tests](https://img.shields.io/badge/Tests-49%20Passed-00C853?style=for-the-badge&logo=pytest&logoColor=white)](#-testing--code-quality)
 [![Docker](https://img.shields.io/badge/docker-ready-FF9900?style=for-the-badge&logo=docker&logoColor=white)](docker/Dockerfile)
 [![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-FF9900?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Checked with mypy](https://img.shields.io/badge/mypy-strict-00C853?style=for-the-badge&logo=python&logoColor=white)](https://mypy-lang.org/)
@@ -48,42 +49,33 @@
 
 ## 🏗️ Architecture
 
-```
-                       +-----------------------------+
-                       |      GitHub Repositories    |
-                       |  (mcp-forge, benni-nexus..) |
-                       +--------------+--------------+
-                                      |
-                 Polling / Cron       |       Real-Time Webhooks
-                       v              |               v
-              +-----------------+     |     +--------------------+
-              |  GitHubWatcher  |     |     |   Webhook Server   |
-              +--------+--------+     |     |  (FastAPI: 8000)   |
-                       |              |     +---------+----------+
-                       +-------+      |               |
-                               |      v               |
-                               +---> [ Analyzer ] <---+
-                                       |
-                     +-----------------+-----------------+
-                     |                                   |
-                     v                                   v
-             [ NEMESIS Nexus ]                   [ Safety Engine ]
-             (LLM Reasoning)                     (Rate-limit, SLA,
-                     |                            Approval Gate)
-                     v                                   |
-           +-------------------+                         v
-           |   DraftResponse   | ----------------> [ Slack Alert ]
-           +---------+---------+                 (Review Needed)
-                     | (Approved or Low-risk)
-                     v
-           +-------------------+
-           |     Responder     | ----> Post to GitHub Issue
-           +---------+---------+
-                     |
-                     v
-          +----------------------+
-          |  NEMESIS Event Bus   | ----> Audit snapshot & trace
-          +----------------------+
+```text
+  GitHub Repositories (Issues / Comments / Pull Requests)
+         │
+         ├──► Polling / Cron  GitHubWatcher (autopilot scan | run)
+         └──► Real-Time HTTP  Webhook Server (FastAPI :8000, HMAC-SHA256)
+                       │
+                       ▼
+  ┌─────────────────────────────────────────────────────────────────────┐
+  │                         community-autopilot                         │
+  │                                                                     │
+  │  ┌───────────────────┐  ┌───────────────────┐  ┌─────────────────┐  │
+  │  │ SLA Prioritizer   │  │  NEMESIS Nexus    │  │ Multi-Tier      │  │
+  │  │ & Context Builder │─►│  LLM Draft        │─►│ Safety Gates    │  │
+  │  │ • CRITICAL / HIGH │  │  Generator        │  │ • Approval Gate │  │
+  │  │ • MEDIUM / LOW    │  │  • Maintainer     │  │ • Budget & Caps │  │
+  │  └───────────────────┘  │    Voice Prompts  │  └─────────────────┘  │
+  │                         └───────────────────┘           │           │
+  │  ┌───────────────────┐  ┌───────────────────┐  ┌────────▼────────┐  │
+  │  │ GitHub Responder  │  │  NEMESIS Event    │  │ Live Telemetry  │  │
+  │  │ • Dry-Run / Post  │◄─│  Bus & Slack      │◄─│ & Doctor /      │  │
+  │  │ • Self-Reply Lock │  │  • Audit Trace    │  │ Bench Matrix    │  │
+  │  └───────────────────┘  └───────────────────┘  └─────────────────┘  │
+  └─────────────────────────────────────────────────────────────────────┘
+         │                                         │
+         ▼                                         ▼
+   GitHub Issue Comment                      NEMESIS Audit Snapshot
+   (Approved Maintainer Reply)               & Slack Ops Notification
 ```
 
 ---
@@ -205,6 +197,48 @@ uv run ruff check src/ tests/
 
 # Run MyPy in strict mode
 uv run mypy --strict src/ tests/
+```
+
+---
+
+## 📁 Project Structure
+
+```text
+community-autopilot/
+├── src/
+│   └── community_autopilot/
+│       ├── __init__.py               # Public package exports
+│       ├── py.typed                  # PEP 561 strict typing marker
+│       ├── analyzer.py               # SLA prioritizer & LLM context builder
+│       ├── cli.py                    # Typer CLI (health, scan, run, approve, serve)
+│       ├── config.py                 # Pydantic-settings configuration
+│       ├── models.py                 # Issue, Comment, Priority & DraftResponse models
+│       ├── nemesis.py                # NEMESIS Event Bus & Nexus client
+│       ├── prompts.py                # Maintainer system & user prompt templates
+│       ├── responder.py              # GitHub responder with safety & budget gates
+│       ├── slack.py                  # Slack operations alert notifier
+│       ├── watcher.py                # GitHub repository issue/comment poller
+│       ├── webhook.py                # FastAPI HMAC-SHA256 webhook server
+│       ├── core/
+│       │   └── __init__.py           # Core triage & domain subpackage exports
+│       ├── serve/
+│       │   ├── __init__.py           # Webhook, NEMESIS, Slack & telemetry exports
+│       │   └── telemetry.py          # P50/P90/P99 triage latency & SLA tracker
+│       └── tools/
+│           ├── __init__.py           # Diagnostics & benchmark subpackage exports
+│           ├── bench_matrix.py       # Multi-batch issue triage benchmark matrix
+│           └── doctor.py             # Runtime dependency, SLA & HMAC probe
+├── docs/
+│   └── ARCHITECTURE.md               # Detailed triage & subpackage architecture spec
+├── examples/
+│   ├── quickstart_triage.py          # Minimal issue SLA prioritization example
+│   └── webhook_telemetry_demo.py     # Webhook HMAC verification + TelemetryEngine
+├── scripts/
+│   ├── benchmark_triage.py           # Issue triage throughput benchmark runner
+│   └── gate_webhook_hmac.py          # HMAC-SHA256 webhook signature gate script
+├── docker/                           # Dockerfile & docker-compose.yml
+├── k8s/                              # Kubernetes deployment, service, secret & cronjob
+└── tests/                            # Full pytest suite (49 tests)
 ```
 
 ---
